@@ -463,19 +463,45 @@
       background: #000;
     }
     .builder-panel {
-      position: sticky;
-      top: 148px;
+      margin-top: 18px;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
       background: var(--surface);
       box-shadow: var(--shadow);
     }
-    .builder-panel__head { padding: 20px; border-bottom: 1px solid var(--line); }
-    .builder-panel__head h2 { margin: 0 0 4px; font-size: 20px; }
-    .builder-panel__head p { margin: 0 0 14px; color: var(--muted); font-size: 12px; }
-    .builder-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .builder-controls .field:first-child { grid-column: 1 / -1; }
+    .builder-panel__head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 1.2fr);
+      gap: 24px;
+      align-items: end;
+      padding: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+    .builder-panel__head h2 { margin: 0 0 6px; font-size: 22px; }
+    .builder-panel__head p { margin: 0 0 10px; color: var(--muted); font-size: 13px; }
+    .builder-controls { display: grid; grid-template-columns: minmax(180px, 1.2fr) repeat(2, minmax(140px, .8fr)); gap: 8px; align-items: end; }
+    .builder-controls .field:first-child { grid-column: auto; }
+    .builder-list-heading { display: grid; grid-template-columns: 28px minmax(0, 1fr) 58px 76px 32px; gap: 6px; padding: 14px 12px 8px; color: var(--muted); font-size: 10px; font-weight: 850; }
+    .builder-list-heading span:first-child { grid-column: 1 / 3; }
+    .builder-list-heading span:not(:first-child) { text-align: center; }
+    .library-guide {
+      margin-bottom: 18px;
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+    }
+    .library-guide h2 { margin: 0 0 14px; font-size: 19px; }
+    .library-guide__steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; counter-reset: guide-step; }
+    .library-guide__steps li { min-width: 0; padding: 14px; border-radius: var(--radius-md); background: var(--surface-2); counter-increment: guide-step; }
+    .library-guide__steps li::before { content: "0" counter(guide-step); display: block; margin-bottom: 7px; color: var(--accent); font-size: 11px; font-weight: 900; }
+    .library-guide__steps strong { display: block; margin-bottom: 5px; font-size: 13px; }
+    .library-guide__steps p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .library-results__heading { margin: 0 0 10px; color: var(--muted); font-size: 13px; font-weight: 800; }
+    .builder-panel__copy { min-width: 0; }
+    .builder-panel__copy .eyebrow { margin: 0 0 6px; color: var(--accent-dark); font-size: 11px; font-weight: 850; text-transform: uppercase; }
+    .builder-panel__copy .builder-guidance { margin: 0; font-size: 12px; }
     .builder-list { display: grid; max-height: 420px; overflow-y: auto; }
     .builder-empty { padding: 28px 20px; color: var(--muted); font-size: 13px; text-align: center; }
     .builder-row {
@@ -2119,10 +2145,19 @@
         padding: 10px;
       }
       .library-toolbar .field:first-child { grid-column: 1 / -1; }
+      .builder-controls { grid-template-columns: 1fr; }
+      .builder-controls .field:first-child { grid-column: auto; }
+      .library-guide__steps { grid-template-columns: 1fr; }
       .exercise-library-grid { grid-template-columns: 1fr; }
       .video-library-grid { grid-template-columns: 1fr; }
       .library-card { min-height: 0; }
+      .builder-panel__head { grid-template-columns: 1fr; gap: 14px; padding: 18px; }
+      .builder-controls { grid-template-columns: 1fr 1fr; }
+      .builder-controls .field:first-child { grid-column: 1 / -1; }
+      .builder-list-heading { grid-template-columns: 26px minmax(0, 1fr) 54px 68px 30px; padding-inline: 9px; }
       .builder-row { grid-template-columns: 26px minmax(0, 1fr) 54px 68px 30px; padding-inline: 9px; }
+      .library-guide { padding: 18px; }
+      .library-guide__steps { grid-template-columns: 1fr 1fr; }
       .rules-card { padding: 20px; }
       .rules-grid { grid-template-columns: 1fr; }
       .plan-builder__top { padding: 20px; }
@@ -3566,7 +3601,7 @@
               <span class="exercise-number">04</span>
               <div class="exercise-title">
                 <h2>Приведение бёдер в тренажёре</h2>
-                <p>Внутренняя поверхность бедра · приводящие мышцы</p>
+                <p>Внутренняя поверхность бёдер · приводящие мышцы</p>
               </div>
               <div class="exercise-dose">
                 <span class="pill pill--accent">3 × 12–15</span>
@@ -4937,7 +4972,7 @@
               <span class="exercise-number">05</span>
               <div class="exercise-title">
                 <h2>Гиперэкстензия</h2>
-                <p>Разгибатели спины и ягодицы · тазовый шарнир без переразгибания</p>
+                <p>Работают разгибатели спины и ягодицы · тазовый шарнир без переразгибания</p>
               </div>
               <div class="exercise-dose">
                 <span class="pill pill--accent">3 × 10–15</span>
@@ -5061,23 +5096,59 @@
     <div class="program-view" id="program-library" role="region" aria-labelledby="section-library" data-program="library" hidden>
       <section class="tool-header" aria-labelledby="library-title">
         <div class="tool-header__copy">
-          <p class="eyebrow">30 упражнений · свой сценарий</p>
+          <p class="eyebrow">30 упражнений · свой план</p>
           <h1 id="library-title">Библиотека упражнений</h1>
-          <p>Выберите цель и время — конструктор предложит основу. Или соберите тренировку вручную, меняя подходы и повторения.</p>
+          <p>Сначала найди упражнения по целевой зоне и оборудованию. Затем добавь их в тренировку и настрой план под себя.</p>
         </div>
         <div class="tool-header__stat" aria-live="polite">
           <strong id="library-count">30</strong>
-          <span>упражнений найдено</span>
+          <span id="library-count-label">упражнений найдено</span>
         </div>
       </section>
 
-      <section class="library-toolbar" aria-label="Фильтры библиотеки">
+      <section class="library-guide" aria-labelledby="library-guide-title">
+        <h2 id="library-guide-title">Как пользоваться библиотекой</h2>
+        <ol class="library-guide__steps">
+          <li><strong>Найти упражнения</strong><p>Ввести название упражнения или зону в поиск либо выбрать зону и оборудование в списках.</p></li>
+          <li><strong>Добавить упражнения</strong><p>Добавить нужные упражнения кнопкой «Добавить в тренировку» на карточке.</p></li>
+          <li><strong>Задать параметры</strong><p>Указать название тренировки, выбрать цель и длительность.</p></li>
+          <li><strong>Настроить нагрузку</strong><p>Выбрать подходы и повторы или длительность по рекомендациям, затем сохранить тренировку.</p></li>
+        </ol>
+      </section>
+
+      <section class="rules-card" aria-labelledby="rules-title">
+        <h2 id="rules-title">Как составить тренировку, которая работает</h2>
+        <div class="rules-grid">
+          <article class="rule">
+            <span>01 · Начало</span>
+            <strong>Сложные движения — в начале</strong>
+            <p>После разминки в начало тренировки лучше поставить присед, тягу, жим или тяжёлое упражнение в тренажёре. Так проще сохранить контроль и технику.</p>
+          </article>
+          <article class="rule">
+            <span>02 · Разнообразие</span>
+            <strong>Сочетай разные движения</strong>
+            <p>Для тренировки всего тела полезно сочетать приседание, движение в тазобедренных суставах, тягу, жим и упражнение на мышцы кора.</p>
+          </article>
+          <article class="rule">
+            <span>03 · Объём</span>
+            <strong>Ориентир — 10–18 рабочих подходов</strong>
+            <p>Начать можно с 10 рабочих подходов. Постепенно увеличивать объём — если хватает времени на восстановление и техника остаётся стабильной.</p>
+          </article>
+          <article class="rule">
+            <span>04 · Вес</span>
+            <strong>Около 2 повторов в запасе</strong>
+            <p>Подходящий вес — тот, с которым после подхода остаётся запас примерно в 2 чистых повтора.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="library-toolbar" aria-label="Фильтры упражнений">
         <div class="field">
-          <label for="exercise-search">Поиск</label>
-          <input id="exercise-search" type="search" placeholder="Например, тяга или ягодицы" autocomplete="off">
+          <label for="exercise-search">Поиск по названию или зоне</label>
+          <input id="exercise-search" type="search" placeholder="Например, ягодицы или тяга" autocomplete="off">
         </div>
         <div class="field">
-          <label for="muscle-filter">Зона</label>
+          <label for="muscle-filter">Целевая зона</label>
           <select id="muscle-filter">
             <option value="all">Все зоны</option>
             <option value="Низ тела">Низ тела</option>
@@ -5091,7 +5162,7 @@
         <div class="field">
           <label for="equipment-filter">Оборудование</label>
           <select id="equipment-filter">
-            <option value="all">Любое</option>
+            <option value="all">Любое оборудование</option>
             <option value="Тренажёр">Тренажёр</option>
             <option value="Штанга">Штанга</option>
             <option value="Гантели">Гантели</option>
@@ -5101,82 +5172,57 @@
         </div>
       </section>
 
-      <div class="library-layout">
-        <section aria-label="Список упражнений">
-          <div class="exercise-library-grid" id="exercise-library-grid"></div>
-        </section>
+      <section class="library-results" aria-labelledby="library-results-title">
+        <h2 class="library-results__heading" id="library-results-title">Упражнения</h2>
+        <div class="exercise-library-grid" id="exercise-library-grid"></div>
+      </section>
 
-        <aside class="builder-panel" aria-labelledby="builder-title">
-          <div class="builder-panel__head">
-            <h2 id="builder-title">Моя тренировка</h2>
-            <p>Оптимально 4–7 упражнений и 10–18 рабочих подходов.</p>
-            <div class="builder-controls">
-              <div class="field">
-                <label for="builder-name">Название</label>
-                <input class="builder-name" id="builder-name" value="Моя тренировка" maxlength="42">
-              </div>
-              <div class="field">
-                <label for="builder-focus">Цель</label>
-                <select id="builder-focus">
-                  <option value="full">Всё тело</option>
-                  <option value="lower">Низ тела</option>
-                  <option value="upper">Верх тела</option>
-                  <option value="core">Кор + спина</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="builder-duration">Время</label>
-                <select id="builder-duration">
-                  <option value="40">40 минут</option>
-                  <option value="55" selected>55 минут</option>
-                  <option value="70">70 минут</option>
-                </select>
-              </div>
+      <aside class="builder-panel" aria-labelledby="builder-title">
+        <div class="builder-panel__head">
+          <div class="builder-panel__copy">
+            <p class="eyebrow">Параметры тренировки</p>
+            <h2 id="builder-title">Настрой тренировку</h2>
+            <p>Задать название тренировки, выбрать цель и длительность.</p>
+            <p class="builder-guidance">В карточках указаны рекомендованные подходы, повторы или время. В списке ниже эти параметры можно изменить.</p>
+          </div>
+          <div class="builder-controls">
+            <div class="field">
+              <label for="builder-name">Название тренировки</label>
+              <input class="builder-name" id="builder-name" maxlength="42" placeholder="Например, Низ тела">
+            </div>
+            <div class="field">
+              <label for="builder-focus">Цель тренировки</label>
+              <select id="builder-focus">
+                <option value="full">Всё тело</option>
+                <option value="lower">Низ тела</option>
+                <option value="upper">Верх тела</option>
+                <option value="core">Кор и спина</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="builder-duration">Длительность</label>
+              <select id="builder-duration">
+                <option value="40">40 минут</option>
+                <option value="55" selected>55 минут</option>
+                <option value="70">70 минут</option>
+              </select>
             </div>
           </div>
-          <div class="builder-list" id="builder-list"></div>
-          <div class="builder-advice" id="builder-advice" aria-live="polite"></div>
-          <div class="builder-summary">
-            <div><strong id="builder-exercises">0</strong><span>упражнений</span></div>
-            <div><strong id="builder-sets">0</strong><span>подходов</span></div>
-            <div><strong id="builder-time">0</strong><span>минут</span></div>
-          </div>
-          <div class="builder-actions">
-            <button class="button" id="auto-build" type="button">Собрать по рекомендации</button>
-            <button class="button button--secondary" id="save-custom-workout" type="button">Сохранить</button>
-            <button class="button button--secondary" id="clear-builder" type="button">Очистить</button>
-          </div>
-        </aside>
-      </div>
-
-      <section class="rules-card" aria-labelledby="rules-title">
-        <h2 id="rules-title">Как составить тренировку, которая работает</h2>
-        <div class="rules-grid">
-          <article class="rule">
-            <span>01 · Начало</span>
-            <strong>Сложное — первым</strong>
-            <p>После разминки ставьте присед, тягу, жим или тяжёлый тренажёр. Здесь важнее всего контроль и сила.</p>
-          </article>
-          <article class="rule">
-            <span>02 · Баланс</span>
-            <strong>Разные паттерны</strong>
-            <p>Для всего тела сочетайте движение коленями, движение тазом, тягу, жим и упражнение на кор.</p>
-          </article>
-          <article class="rule">
-            <span>03 · Объём</span>
-            <strong>10–18 подходов</strong>
-            <p>Начните с нижней границы. Добавляйте объём только если восстанавливаетесь и техника не ухудшается.</p>
-          </article>
-          <article class="rule">
-            <span>04 · Вес</span>
-            <strong>Оставьте 2 повтора</strong>
-            <p>Подбирайте вес так, чтобы в конце подхода могли сделать ещё примерно два чистых повторения.</p>
-          </article>
         </div>
-        <div class="source-links" style="margin-top:16px">
-          <a href="https://acsm.org/resistance-training-guidelines-update-2026/" target="_blank" rel="noreferrer">ACSM 2026: регулярность, объём и индивидуализация ↗</a>
+        <div class="builder-list-heading" aria-hidden="true"><span>Упражнение</span><span>Подходы</span><span>Повторы / время</span></div>
+        <div class="builder-list" id="builder-list"></div>
+        <div class="builder-advice" id="builder-advice" aria-live="polite"></div>
+        <div class="builder-summary">
+          <div><strong id="builder-exercises">0</strong><span>упражнений</span></div>
+          <div><strong id="builder-sets">0</strong><span>подходов</span></div>
+          <div><strong id="builder-time">0</strong><span>минут</span></div>
         </div>
-      </section>
+        <div class="builder-actions">
+          <button class="button" id="auto-build" type="button">Подобрать упражнения по рекомендации</button>
+          <button class="button button--secondary" id="save-custom-workout" type="button">Сохранить тренировку</button>
+          <button class="button button--secondary" id="clear-builder" type="button">Очистить список</button>
+        </div>
+      </aside>
     </div>
 
     <div class="program-view" id="program-video" role="region" aria-labelledby="section-video" data-program="video" hidden>
@@ -5912,35 +5958,35 @@
       ];
 
       const exerciseCatalog = [
-        { id: "hip", name: "Ягодичный мост со штангой", group: "Низ тела", equipment: "Штанга", pattern: "Таз", sets: 3, reps: "8–10", cue: "Тяжёлая база для ягодиц" },
-        { id: "rdl", name: "Румынская тяга", group: "Низ тела", equipment: "Гантели", pattern: "Таз", sets: 3, reps: "8–10", cue: "Задняя поверхность бедра и ягодицы" },
-        { id: "split", name: "Болгарский сплит-присед", group: "Низ тела", equipment: "Свой вес", pattern: "Одна нога", sets: 2, reps: "10 / нога", cue: "Сила каждой ноги отдельно" },
-        { id: "kick", name: "Разгибание бедра в блоке", group: "Низ тела", equipment: "Блок", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Контролируемое разгибание бедра" },
-        { id: "abd", name: "Отведение бёдер", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "15–20", cue: "Средняя ягодичная без раскачки" },
-        { id: "legs-squat", name: "Присед со штангой", group: "Низ тела", equipment: "Штанга", pattern: "Колени", sets: 3, reps: "6–8", cue: "Главное силовое движение дня ног" },
-        { id: "legs-press", name: "Жим ногами", group: "Низ тела", equipment: "Тренажёр", pattern: "Колени", sets: 3, reps: "10–12", cue: "Квадрицепс и ягодицы с опорой" },
-        { id: "legs-extension", name: "Разгибание голени", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Изолированная работа квадрицепса" },
+        { id: "hip", name: "Ягодичный мост со штангой", group: "Низ тела", equipment: "Штанга", pattern: "Таз", sets: 3, reps: "8–10", cue: "Силовое упражнение для ягодичных мышц" },
+        { id: "rdl", name: "Румынская тяга", group: "Низ тела", equipment: "Гантели", pattern: "Таз", sets: 3, reps: "8–10", cue: "Нагружает заднюю поверхность бёдер и ягодицы." },
+        { id: "split", name: "Болгарский сплит-присед", group: "Низ тела", equipment: "Свой вес", pattern: "Одна нога", sets: 2, reps: "10 / нога", cue: "Работай поочерёдно каждой ногой." },
+        { id: "kick", name: "Разгибание бедра в блоке", group: "Низ тела", equipment: "Блок", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Разгибай бедро плавно, без рывка." },
+        { id: "abd", name: "Отведение бёдер", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "15–20", cue: "Держи корпус ровно, без раскачивания." },
+        { id: "legs-squat", name: "Присед со штангой", group: "Низ тела", equipment: "Штанга", pattern: "Колени", sets: 3, reps: "6–8", cue: "Силовое упражнение для ног" },
+        { id: "legs-press", name: "Жим ногами", group: "Низ тела", equipment: "Тренажёр", pattern: "Колени", sets: 3, reps: "10–12", cue: "Работают квадрицепсы и ягодицы; спина опирается на спинку тренажёра." },
+        { id: "legs-extension", name: "Разгибание голени", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Работа на квадрицепсы" },
         { id: "legs-curl", name: "Сгибание голени лёжа", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "10–12", cue: "Задняя поверхность бедра" },
-        { id: "legs-calf", name: "Подъёмы на носки стоя", group: "Низ тела", equipment: "Тренажёр", pattern: "Икры", sets: 3, reps: "12–15", cue: "Икры в полной амплитуде" },
-        { id: "lower-hip-thrust", name: "Ягодичный мост в тренажёре", group: "Низ тела", equipment: "Тренажёр", pattern: "Таз", sets: 3, reps: "8–12", cue: "Удобная силовая работа на ягодицы" },
-        { id: "lower-hack", name: "Гакк-присед", group: "Низ тела", equipment: "Тренажёр", pattern: "Колени", sets: 3, reps: "8–10", cue: "Присед с фиксированной траекторией" },
-        { id: "lower-curl", name: "Сгибание голени сидя", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 3, reps: "10–12", cue: "Задняя поверхность бедра сидя" },
+        { id: "legs-calf", name: "Подъёмы на носки стоя", group: "Низ тела", equipment: "Тренажёр", pattern: "Икры", sets: 3, reps: "12–15", cue: "Выполняй движение в полной амплитуде." },
+        { id: "lower-hip-thrust", name: "Ягодичный мост в тренажёре", group: "Низ тела", equipment: "Тренажёр", pattern: "Таз", sets: 3, reps: "8–12", cue: "Силовая нагрузка на ягодицы с опорой на тренажёр." },
+        { id: "lower-hack", name: "Гакк-присед", group: "Низ тела", equipment: "Тренажёр", pattern: "Колени", sets: 3, reps: "8–10", cue: "Присед по заданной траектории тренажёра" },
+        { id: "lower-curl", name: "Сгибание голени сидя", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 3, reps: "10–12", cue: "Задняя поверхность бедра в положении сидя" },
         { id: "lower-adduction", name: "Приведение бёдер", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "15–20", cue: "Внутренняя поверхность бедра" },
-        { id: "lower-calf", name: "Подъёмы на носки сидя", group: "Низ тела", equipment: "Тренажёр", pattern: "Икры", sets: 3, reps: "12–15", cue: "Икры с согнутыми коленями" },
-        { id: "upper-pulldown", name: "Вертикальная тяга", group: "Спина", equipment: "Блок", pattern: "Тяга", sets: 3, reps: "8–12", cue: "Широчайшие и верх спины" },
-        { id: "upper-row", name: "Горизонтальная тяга", group: "Спина", equipment: "Блок", pattern: "Тяга", sets: 3, reps: "8–12", cue: "Толщина спины и лопатки" },
-        { id: "upper-reverse", name: "Обратная бабочка", group: "Плечи", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Задняя дельта и контроль лопаток" },
-        { id: "upper-biceps", name: "Сгибание рук с гантелями", group: "Руки", equipment: "Гантели", pattern: "Изоляция", sets: 2, reps: "10–12", cue: "Бицепс без движения плеч" },
-        { id: "upper-triceps", name: "Разгибание рук в блоке", group: "Руки", equipment: "Блок", pattern: "Изоляция", sets: 2, reps: "10–15", cue: "Трицепс с фиксированными локтями" },
-        { id: "push-chest-press", name: "Жим от груди в тренажёре", group: "Грудь", equipment: "Тренажёр", pattern: "Жим", sets: 3, reps: "8–12", cue: "Стабильная база для груди" },
-        { id: "push-incline", name: "Наклонный жим гантелей", group: "Грудь", equipment: "Гантели", pattern: "Жим", sets: 3, reps: "8–10", cue: "Верх груди и передняя дельта" },
-        { id: "push-shoulder-press", name: "Жим вверх в тренажёре", group: "Плечи", equipment: "Тренажёр", pattern: "Жим", sets: 3, reps: "8–12", cue: "Силовая работа на плечи" },
-        { id: "push-lateral", name: "Подъёмы гантелей в стороны", group: "Плечи", equipment: "Гантели", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Средняя дельта без рывка" },
-        { id: "push-fly", name: "Сведение рук в тренажёре", group: "Грудь", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Грудные мышцы в контроле" },
-        { id: "core-crunch", name: "Двойное скручивание", group: "Кор", equipment: "Тренажёр", pattern: "Сгибание", sets: 3, reps: "10–15", cue: "Одновременное движение рёбер и таза" },
-        { id: "core-knee-raise", name: "Подъём коленей в упоре", group: "Кор", equipment: "Свой вес", pattern: "Сгибание", sets: 3, reps: "8–12", cue: "Таз подкручивается к рёбрам" },
-        { id: "core-pallof", name: "Жим Палофа", group: "Кор", equipment: "Блок", pattern: "Стабилизация", sets: 2, reps: "10 / сторона", cue: "Корпус сопротивляется повороту" },
-        { id: "core-carry", name: "Чемоданная прогулка", group: "Кор", equipment: "Гантели", pattern: "Стабилизация", sets: 2, reps: "30–40 сек", cue: "Корпус сопротивляется наклону" },
+        { id: "lower-calf", name: "Подъёмы на носки сидя", group: "Низ тела", equipment: "Тренажёр", pattern: "Икры", sets: 3, reps: "12–15", cue: "Икры при согнутых коленях" },
+        { id: "upper-pulldown", name: "Вертикальная тяга", group: "Спина", equipment: "Блок", pattern: "Тяга", sets: 3, reps: "8–12", cue: "Широчайшие мышцы и верх спины" },
+        { id: "upper-row", name: "Горизонтальная тяга", group: "Спина", equipment: "Блок", pattern: "Тяга", sets: 3, reps: "8–12", cue: "Тяни рукоять к себе, сводя лопатки." },
+        { id: "upper-reverse", name: "Обратная бабочка", group: "Плечи", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Задняя часть плеча и контроль лопаток." },
+        { id: "upper-biceps", name: "Сгибание рук с гантелями", group: "Руки", equipment: "Гантели", pattern: "Изоляция", sets: 2, reps: "10–12", cue: "Работает бицепс, плечи остаются неподвижными." },
+        { id: "upper-triceps", name: "Разгибание рук в блоке", group: "Руки", equipment: "Блок", pattern: "Изоляция", sets: 2, reps: "10–15", cue: "Работает трицепс, локти остаются неподвижными." },
+        { id: "push-chest-press", name: "Жим от груди в тренажёре", group: "Грудь", equipment: "Тренажёр", pattern: "Жим", sets: 3, reps: "8–12", cue: "Жим для грудных мышц с опорой спины." },
+        { id: "push-incline", name: "Наклонный жим гантелей", group: "Грудь", equipment: "Гантели", pattern: "Жим", sets: 3, reps: "8–10", cue: "Наклонный жим нагружает верх груди и переднюю дельту." },
+        { id: "push-shoulder-press", name: "Жим вверх в тренажёре", group: "Плечи", equipment: "Тренажёр", pattern: "Жим", sets: 3, reps: "8–12", cue: "Жим для мышц плеч." },
+        { id: "push-lateral", name: "Подъёмы гантелей в стороны", group: "Плечи", equipment: "Гантели", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Подъём гантелей на среднюю дельту — без рывков." },
+        { id: "push-fly", name: "Сведение рук в тренажёре", group: "Грудь", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Сведение рук для грудных мышц с контролем движения." },
+        { id: "core-crunch", name: "Двойное скручивание", group: "Кор", equipment: "Тренажёр", pattern: "Сгибание", sets: 3, reps: "10–15", cue: "Одновременное сближение рёбер и таза" },
+        { id: "core-knee-raise", name: "Подъём коленей в упоре", group: "Кор", equipment: "Свой вес", pattern: "Сгибание", sets: 3, reps: "8–12", cue: "Подкручивай таз к рёбрам" },
+        { id: "core-pallof", name: "Жим Палофа", group: "Кор", equipment: "Блок", pattern: "Стабилизация", sets: 2, reps: "10 / сторона", cue: "Не позволяй тросу разворачивать корпус." },
+        { id: "core-carry", name: "Чемоданная прогулка", group: "Кор", equipment: "Гантели", pattern: "Стабилизация", sets: 2, reps: "30–40 сек", cue: "Держи корпус ровно, не наклоняйся в сторону." },
         { id: "core-back-extension", name: "Гиперэкстензия", group: "Спина", equipment: "Свой вес", pattern: "Таз", sets: 3, reps: "10–15", cue: "Разгибатели спины и ягодицы" }
       ];
 
@@ -5975,7 +6021,7 @@
         });
         document.querySelector("#video-count").textContent = filtered.length;
         if (!filtered.length) {
-          videoLibraryGrid.innerHTML = '<div class="library-empty">Ничего не найдено. Попробуйте убрать один из фильтров.</div>';
+          videoLibraryGrid.innerHTML = '<div class="library-empty">По этим фильтрам упражнений нет. Измени запрос, целевую зону или оборудование.</div>';
           return;
         }
         videoLibraryGrid.innerHTML = filtered.map((video) => `
@@ -6041,6 +6087,11 @@
           return matchesQuery && (group === "all" || exercise.group === group) && (equipment === "all" || exercise.equipment === equipment);
         });
         document.querySelector("#library-count").textContent = filtered.length;
+        const count = filtered.length;
+        const lastTwo = count % 100;
+        const lastOne = count % 10;
+        const noun = lastTwo >= 11 && lastTwo <= 14 ? "упражнений" : lastOne === 1 ? "упражнение" : lastOne >= 2 && lastOne <= 4 ? "упражнения" : "упражнений";
+        document.querySelector("#library-count-label").textContent = count ? `${noun} найдено` : "упражнений не найдено";
         if (!filtered.length) {
           libraryGrid.innerHTML = '<div class="library-empty">Ничего не найдено. Попробуйте убрать один из фильтров.</div>';
           return;
@@ -6057,10 +6108,10 @@
                   <span class="meta-chip">${exercise.equipment}</span>
                 </div>
                 <h3>${exercise.name}</h3>
-                <p>${exercise.sets} × ${exercise.reps} · ${exercise.cue}</p>
+                <p>Рекомендация: ${exercise.sets} подхода × ${exercise.reps}. ${exercise.cue}</p>
                 <div class="library-card__actions${video ? "" : " is-single"}">
                   ${video ? `<a class="library-card__video" href="${video.share}" target="_blank" rel="noopener noreferrer" aria-label="Смотреть видео: ${escapeHtml(exercise.name)}">▶ Видео</a>` : ""}
-                  <button type="button" data-library-add="${exercise.id}" aria-pressed="${selected}">${selected ? "Добавлено ✓" : "Добавить в тренировку"}</button>
+                  <button type="button" data-library-add="${exercise.id}" aria-pressed="${selected}">${selected ? "Убрать из тренировки" : "Добавить в тренировку"}</button>
                 </div>
               </div>
             </article>`;
@@ -6072,16 +6123,21 @@
         const sets = builderItems.reduce((sum, item) => sum + Number(item.sets || 0), 0);
         const patterns = new Set(builderItems.map((item) => exerciseCatalog.find((exercise) => exercise.id === item.id)?.pattern));
         const lines = [];
-        if (count < 4) lines.push({ warning: true, text: `Добавьте ещё ${4 - count} ${4 - count === 1 ? "упражнение" : "упражнения"} для полноценной тренировки.` });
-        else if (count <= 7) lines.push({ warning: false, text: "Количество упражнений подходит для одной тренировки." });
-        else lines.push({ warning: true, text: "Больше 7 упражнений: тренировка может стать длинной, а качество последних подходов — снизиться." });
-        if (sets < 10) lines.push({ warning: true, text: "Рабочих подходов пока мало. Ориентир для одной сессии — 10–18." });
-        else if (sets <= 18) lines.push({ warning: false, text: "Объём находится в практичном диапазоне 10–18 рабочих подходов." });
-        else lines.push({ warning: true, text: "Объём выше 18 подходов. Уберите изоляцию или сократите по одному подходу." });
+        if (!count) return lines;
+        if (count < 4) {
+          const missing = 4 - count;
+          const word = missing === 1 ? "упражнение" : missing < 5 ? "упражнения" : "упражнений";
+          lines.push({ warning: true, text: `Добавь ещё ${missing} ${word} чтобы достичь нижней границы ориентира — 4 упражнения.` });
+        } else if (count <= 7) lines.push({ warning: false, text: "Количество упражнений подходит для одной тренировки." });
+        else lines.push({ warning: true, text: "В плане больше 7 упражнений. Тренировка может затянуться, и будет сложнее сохранить технику в последних подходах." });
+        if (sets < 10) lines.push({ warning: true, text: "В плане меньше 10 рабочих подходов. Ориентир — 10–18 за тренировку." });
+        else if (sets <= 18) lines.push({ warning: false, text: "Объём в ориентире: 10–18 рабочих подходов." });
+        else lines.push({ warning: true, text: "В плане больше 18 рабочих подходов. Если тренировка получается длинной, можно сократить число упражнений или подходов." });
         if (count >= 4) {
+          const word = patterns.size === 1 ? "тип" : patterns.size < 5 ? "типа" : "типов";
           lines.push({
             warning: patterns.size < 3,
-            text: patterns.size < 3 ? "Добавьте другой тип движения, чтобы нагрузка не повторялась." : `Есть ${patterns.size} разных типа движения — хороший баланс.`
+            text: patterns.size < 3 ? "В плане мало разных типов движений. Добавь упражнения с другой нагрузкой." : `В тренировке ${patterns.size} ${word} движений — это помогает разнообразить нагрузку.`
           });
         }
         return lines;
@@ -6089,7 +6145,7 @@
 
       const renderBuilder = () => {
         if (!builderItems.length) {
-          builderList.innerHTML = '<div class="builder-empty">Выберите упражнения в библиотеке или нажмите «Собрать по рекомендации».</div>';
+          builderList.innerHTML = '<div class="builder-empty">Сначала добавь упражнения из списка выше или подбери их по рекомендации.</div>';
         } else {
           builderList.innerHTML = builderItems.map((item, index) => {
             const exercise = exerciseCatalog.find((entry) => entry.id === item.id);
@@ -6100,7 +6156,7 @@
                 <select data-builder-sets="${item.id}" aria-label="Подходы для ${exercise.name}">
                   ${[2,3,4].map((sets) => `<option value="${sets}"${Number(item.sets) === sets ? " selected" : ""}>${sets} подх.</option>`).join("")}
                 </select>
-                <input data-builder-reps="${item.id}" value="${escapeHtml(item.reps)}" aria-label="Повторения для ${exercise.name}">
+                <input data-builder-reps="${item.id}" value="${escapeHtml(item.reps)}" aria-label="Повторы или время для ${exercise.name}">
                 <button class="icon-button" data-builder-remove="${item.id}" type="button" aria-label="Убрать ${exercise.name}">×</button>
               </div>`;
           }).join("");
@@ -6166,16 +6222,16 @@
           const exercise = exerciseCatalog.find((item) => item.id === id);
           return { id, sets: exercise.sets, reps: exercise.reps };
         });
-        const names = { full: "Всё тело", lower: "Сильный низ", upper: "Верх тела", core: "Кор и спина" };
-        document.querySelector("#builder-name").value = `${names[focus]} · ${duration} мин`;
+        const names = { full: "Всё тело", lower: "Низ тела", upper: "Верх тела", core: "Кор и спина" };
+        document.querySelector("#builder-name").value = `${names[focus]} — ${duration} минут`;
         renderBuilder();
-        showToast("Сбалансированная основа собрана");
+        showToast("Готово: упражнения подходят к выбранной цели и длительности");
       });
 
       document.querySelector("#clear-builder").addEventListener("click", () => {
         builderItems = [];
         renderBuilder();
-        showToast("Конструктор очищен");
+        showToast("Список упражнений очищен");
       });
 
       const getSavedCustomWorkout = () => {
@@ -6189,7 +6245,7 @@
 
       document.querySelector("#save-custom-workout").addEventListener("click", () => {
         if (builderItems.length < 4) {
-          showToast("Для сохранения выберите минимум 4 упражнения");
+          showToast("Чтобы сохранить тренировку, добавь не меньше 4 упражнений");
           return;
         }
         const workout = {
@@ -6198,7 +6254,7 @@
           updatedAt: new Date().toISOString()
         };
         localStorage.setItem(customWorkoutStorageKey, JSON.stringify(workout));
-        showToast("Тренировка сохранена и доступна в календаре");
+        showToast("Тренировка сохранена. Её можно добавить в календарь");
         renderCalendar();
       });
 
