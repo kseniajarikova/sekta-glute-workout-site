@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f7f5f1">
   <title>Тренировки в зале: низ тела, спина, грудь и плечи — техника, вес и подходы</title>
   <style>
@@ -2069,7 +2069,7 @@
       .primary-nav-button { min-width: 0; padding: 0 8px; font-size: 11px; }
       .workout-picker-shell { grid-column: 2; grid-row: 1; width: 100%; }
       .workout-picker-shell span { display: none; }
-      main { padding-top: 18px; padding-bottom: 96px; }
+      main { padding-top: 18px; padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
       .hero { gap: 12px; }
       .hero__main { padding: 26px 22px; border-radius: 22px; }
       h1 { font-size: clamp(44px, 15vw, 62px); }
@@ -2159,7 +2159,7 @@
       .mobile-timer-button {
         position: fixed;
         right: 14px;
-        bottom: 14px;
+        bottom: calc(14px + env(safe-area-inset-bottom));
         z-index: 60;
         display: inline-flex;
         min-height: 48px;
@@ -2178,7 +2178,7 @@
         position: fixed;
         left: 12px;
         right: 12px;
-        bottom: 74px;
+        bottom: calc(74px + env(safe-area-inset-bottom));
         z-index: 70;
         display: block;
         border: 1px solid #454945;
