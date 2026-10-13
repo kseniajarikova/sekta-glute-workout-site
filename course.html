@@ -5106,16 +5106,6 @@
         </div>
       </section>
 
-      <section class="library-guide" aria-labelledby="library-guide-title">
-        <h2 id="library-guide-title">Как пользоваться библиотекой</h2>
-        <ol class="library-guide__steps">
-          <li><strong>Найти упражнения</strong><p>Ввести название упражнения или зону в поиск либо выбрать зону и оборудование в списках.</p></li>
-          <li><strong>Добавить упражнения</strong><p>Добавить нужные упражнения кнопкой «Добавить в тренировку» на карточке.</p></li>
-          <li><strong>Задать параметры</strong><p>Указать название тренировки, выбрать цель и длительность.</p></li>
-          <li><strong>Настроить нагрузку</strong><p>Выбрать подходы и повторы или длительность по рекомендациям, затем сохранить тренировку.</p></li>
-        </ol>
-      </section>
-
       <section class="rules-card" aria-labelledby="rules-title">
         <h2 id="rules-title">Как составить тренировку, которая работает</h2>
         <div class="rules-grid">
@@ -5140,6 +5130,16 @@
             <p>Подходящий вес — тот, с которым после подхода остаётся запас примерно в 2 чистых повтора.</p>
           </article>
         </div>
+      </section>
+
+      <section class="library-guide" aria-labelledby="library-guide-title">
+        <h2 id="library-guide-title">Как пользоваться библиотекой</h2>
+        <ol class="library-guide__steps">
+          <li><strong>Найти упражнения</strong><p>Ввести название упражнения или зону в поиск либо выбрать зону и оборудование в списках.</p></li>
+          <li><strong>Добавить упражнения</strong><p>Добавить нужные упражнения кнопкой «Добавить в тренировку» на карточке.</p></li>
+          <li><strong>Задать параметры</strong><p>Указать название тренировки, выбрать цель и длительность.</p></li>
+          <li><strong>Настроить нагрузку</strong><p>Выбрать подходы и повторы или длительность по рекомендациям, затем сохранить тренировку.</p></li>
+        </ol>
       </section>
 
       <section class="library-toolbar" aria-label="Фильтры упражнений">
@@ -5209,7 +5209,7 @@
             </div>
           </div>
         </div>
-        <div class="builder-list-heading" aria-hidden="true"><span>Упражнение</span><span>Подходы</span><span>Повторы / время</span></div>
+        <div class="builder-list-heading"><span>Упражнение</span><span>Подходы</span><span>Повторы / время</span></div>
         <div class="builder-list" id="builder-list"></div>
         <div class="builder-advice" id="builder-advice" aria-live="polite"></div>
         <div class="builder-summary">
@@ -5958,36 +5958,36 @@
       ];
 
       const exerciseCatalog = [
-        { id: "hip", name: "Ягодичный мост со штангой", group: "Низ тела", equipment: "Штанга", pattern: "Таз", sets: 3, reps: "8–10", cue: "Силовое упражнение для ягодичных мышц" },
+        { id: "hip", name: "Ягодичный мост со штангой", group: "Низ тела", equipment: "Штанга", pattern: "Таз", sets: 3, reps: "8–10", cue: "Упражнение помогает развивать силу ягодичных мышц." },
         { id: "rdl", name: "Румынская тяга", group: "Низ тела", equipment: "Гантели", pattern: "Таз", sets: 3, reps: "8–10", cue: "Нагружает заднюю поверхность бёдер и ягодицы." },
         { id: "split", name: "Болгарский сплит-присед", group: "Низ тела", equipment: "Свой вес", pattern: "Одна нога", sets: 2, reps: "10 / нога", cue: "Работай поочерёдно каждой ногой." },
         { id: "kick", name: "Разгибание бедра в блоке", group: "Низ тела", equipment: "Блок", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Разгибай бедро плавно, без рывка." },
         { id: "abd", name: "Отведение бёдер", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "15–20", cue: "Держи корпус ровно, без раскачивания." },
-        { id: "legs-squat", name: "Присед со штангой", group: "Низ тела", equipment: "Штанга", pattern: "Колени", sets: 3, reps: "6–8", cue: "Силовое упражнение для ног" },
+        { id: "legs-squat", name: "Присед со штангой", group: "Низ тела", equipment: "Штанга", pattern: "Колени", sets: 3, reps: "6–8", cue: "Помогает развивать силу мышц ног." },
         { id: "legs-press", name: "Жим ногами", group: "Низ тела", equipment: "Тренажёр", pattern: "Колени", sets: 3, reps: "10–12", cue: "Работают квадрицепсы и ягодицы; спина опирается на спинку тренажёра." },
-        { id: "legs-extension", name: "Разгибание голени", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Работа на квадрицепсы" },
-        { id: "legs-curl", name: "Сгибание голени лёжа", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "10–12", cue: "Задняя поверхность бедра" },
+        { id: "legs-extension", name: "Разгибание голени", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Упражнение изолированно нагружает квадрицепсы." },
+        { id: "legs-curl", name: "Сгибание голени лёжа", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "10–12", cue: "Упражнение нагружает заднюю поверхность бедра." },
         { id: "legs-calf", name: "Подъёмы на носки стоя", group: "Низ тела", equipment: "Тренажёр", pattern: "Икры", sets: 3, reps: "12–15", cue: "Выполняй движение в полной амплитуде." },
-        { id: "lower-hip-thrust", name: "Ягодичный мост в тренажёре", group: "Низ тела", equipment: "Тренажёр", pattern: "Таз", sets: 3, reps: "8–12", cue: "Силовая нагрузка на ягодицы с опорой на тренажёр." },
-        { id: "lower-hack", name: "Гакк-присед", group: "Низ тела", equipment: "Тренажёр", pattern: "Колени", sets: 3, reps: "8–10", cue: "Присед по заданной траектории тренажёра" },
-        { id: "lower-curl", name: "Сгибание голени сидя", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 3, reps: "10–12", cue: "Задняя поверхность бедра в положении сидя" },
-        { id: "lower-adduction", name: "Приведение бёдер", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "15–20", cue: "Внутренняя поверхность бедра" },
-        { id: "lower-calf", name: "Подъёмы на носки сидя", group: "Низ тела", equipment: "Тренажёр", pattern: "Икры", sets: 3, reps: "12–15", cue: "Икры при согнутых коленях" },
-        { id: "upper-pulldown", name: "Вертикальная тяга", group: "Спина", equipment: "Блок", pattern: "Тяга", sets: 3, reps: "8–12", cue: "Широчайшие мышцы и верх спины" },
+        { id: "lower-hip-thrust", name: "Ягодичный мост в тренажёре", group: "Низ тела", equipment: "Тренажёр", pattern: "Таз", sets: 3, reps: "8–12", cue: "Тренажёр даёт опору во время силовой работы на ягодицы." },
+        { id: "lower-hack", name: "Гакк-присед", group: "Низ тела", equipment: "Тренажёр", pattern: "Колени", sets: 3, reps: "8–10", cue: "Тренажёр задаёт траекторию приседания." },
+        { id: "lower-curl", name: "Сгибание голени сидя", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 3, reps: "10–12", cue: "Сгибание голени сидя нагружает заднюю поверхность бедра." },
+        { id: "lower-adduction", name: "Приведение бёдер", group: "Низ тела", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "15–20", cue: "Упражнение нагружает внутреннюю поверхность бёдер." },
+        { id: "lower-calf", name: "Подъёмы на носки сидя", group: "Низ тела", equipment: "Тренажёр", pattern: "Икры", sets: 3, reps: "12–15", cue: "Движение выполняется с согнутыми коленями и нагружает мышцы голени." },
+        { id: "upper-pulldown", name: "Вертикальная тяга", group: "Спина", equipment: "Блок", pattern: "Тяга", sets: 3, reps: "8–12", cue: "Тяга нагружает широчайшие мышцы и верх спины." },
         { id: "upper-row", name: "Горизонтальная тяга", group: "Спина", equipment: "Блок", pattern: "Тяга", sets: 3, reps: "8–12", cue: "Тяни рукоять к себе, сводя лопатки." },
-        { id: "upper-reverse", name: "Обратная бабочка", group: "Плечи", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Задняя часть плеча и контроль лопаток." },
+        { id: "upper-reverse", name: "Обратная бабочка", group: "Плечи", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Упражнение нагружает заднюю дельту и помогает контролировать лопатки." },
         { id: "upper-biceps", name: "Сгибание рук с гантелями", group: "Руки", equipment: "Гантели", pattern: "Изоляция", sets: 2, reps: "10–12", cue: "Работает бицепс, плечи остаются неподвижными." },
         { id: "upper-triceps", name: "Разгибание рук в блоке", group: "Руки", equipment: "Блок", pattern: "Изоляция", sets: 2, reps: "10–15", cue: "Работает трицепс, локти остаются неподвижными." },
-        { id: "push-chest-press", name: "Жим от груди в тренажёре", group: "Грудь", equipment: "Тренажёр", pattern: "Жим", sets: 3, reps: "8–12", cue: "Жим для грудных мышц с опорой спины." },
+        { id: "push-chest-press", name: "Жим от груди в тренажёре", group: "Грудь", equipment: "Тренажёр", pattern: "Жим", sets: 3, reps: "8–12", cue: "Жим нагружает грудные мышцы, а спина остаётся на опоре." },
         { id: "push-incline", name: "Наклонный жим гантелей", group: "Грудь", equipment: "Гантели", pattern: "Жим", sets: 3, reps: "8–10", cue: "Наклонный жим нагружает верх груди и переднюю дельту." },
-        { id: "push-shoulder-press", name: "Жим вверх в тренажёре", group: "Плечи", equipment: "Тренажёр", pattern: "Жим", sets: 3, reps: "8–12", cue: "Жим для мышц плеч." },
-        { id: "push-lateral", name: "Подъёмы гантелей в стороны", group: "Плечи", equipment: "Гантели", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Подъём гантелей на среднюю дельту — без рывков." },
-        { id: "push-fly", name: "Сведение рук в тренажёре", group: "Грудь", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Сведение рук для грудных мышц с контролем движения." },
-        { id: "core-crunch", name: "Двойное скручивание", group: "Кор", equipment: "Тренажёр", pattern: "Сгибание", sets: 3, reps: "10–15", cue: "Одновременное сближение рёбер и таза" },
-        { id: "core-knee-raise", name: "Подъём коленей в упоре", group: "Кор", equipment: "Свой вес", pattern: "Сгибание", sets: 3, reps: "8–12", cue: "Подкручивай таз к рёбрам" },
+        { id: "push-shoulder-press", name: "Жим вверх в тренажёре", group: "Плечи", equipment: "Тренажёр", pattern: "Жим", sets: 3, reps: "8–12", cue: "Жим нагружает мышцы плечевого пояса." },
+        { id: "push-lateral", name: "Подъёмы гантелей в стороны", group: "Плечи", equipment: "Гантели", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Поднимай гантели в стороны плавно, без рывков." },
+        { id: "push-fly", name: "Сведение рук в тренажёре", group: "Грудь", equipment: "Тренажёр", pattern: "Изоляция", sets: 2, reps: "12–15", cue: "Плавно своди рукояти, сохраняя контроль над движением." },
+        { id: "core-crunch", name: "Двойное скручивание", group: "Кор", equipment: "Тренажёр", pattern: "Сгибание", sets: 3, reps: "10–15", cue: "Сближай рёбра и таз одновременно." },
+        { id: "core-knee-raise", name: "Подъём коленей в упоре", group: "Кор", equipment: "Свой вес", pattern: "Сгибание", sets: 3, reps: "8–12", cue: "Подкручивай таз к рёбрам." },
         { id: "core-pallof", name: "Жим Палофа", group: "Кор", equipment: "Блок", pattern: "Стабилизация", sets: 2, reps: "10 / сторона", cue: "Не позволяй тросу разворачивать корпус." },
         { id: "core-carry", name: "Чемоданная прогулка", group: "Кор", equipment: "Гантели", pattern: "Стабилизация", sets: 2, reps: "30–40 сек", cue: "Держи корпус ровно, не наклоняйся в сторону." },
-        { id: "core-back-extension", name: "Гиперэкстензия", group: "Спина", equipment: "Свой вес", pattern: "Таз", sets: 3, reps: "10–15", cue: "Разгибатели спины и ягодицы" }
+        { id: "core-back-extension", name: "Гиперэкстензия", group: "Спина", equipment: "Свой вес", pattern: "Таз", sets: 3, reps: "10–15", cue: "Гиперэкстензия нагружает разгибатели спины и ягодицы." }
       ];
 
       const builderStorageKey = "sekta-workout-builder-v1";
