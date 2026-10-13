@@ -2063,10 +2063,17 @@
         grid-column: 1 / -1;
         grid-row: 2;
         width: 100%;
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        min-width: 0;
+        max-width: 100%;
+        display: flex;
+        gap: 2px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
       }
-      .primary-nav-button { min-width: 0; padding: 0 8px; font-size: 11px; }
+      .primary-nav-button { flex: 0 0 auto; min-height: 44px; padding: 0 12px; font-size: 11px; }
       .workout-picker-shell { grid-column: 2; grid-row: 1; width: 100%; }
       .workout-picker-shell span { display: none; }
       main { padding-top: 18px; padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
@@ -5611,6 +5618,9 @@
         sectionTabs.forEach((tab) => {
           const isActive = tab.dataset.sectionTab === activeSection;
           tab.setAttribute("aria-selected", String(isActive));
+          if (isActive && window.matchMedia("(max-width: 700px)").matches) {
+            tab.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
+          }
         });
         if (activeSection === "training") workoutPicker.value = activeProgram;
         document.body.dataset.activeProgram = activeProgram;
