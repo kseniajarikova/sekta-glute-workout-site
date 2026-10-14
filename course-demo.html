@@ -150,15 +150,14 @@
       font-weight: 850;
       letter-spacing: -.02em;
     }
-    .brand__mark {
-      width: 32px;
-      height: 32px;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
-      background: var(--ink);
-      color: var(--lime);
-      font-size: 17px;
+    .brand__logo {
+      display: block;
+      width: 90px;
+      height: 33px;
+      flex: 0 0 auto;
+      border-radius: 3px;
+      object-fit: contain;
+      object-position: left center;
     }
     .nav {
       display: flex;
@@ -2267,7 +2266,7 @@
   <header class="topbar" inert>
     <div class="topbar__inner">
       <a class="brand" href="#top" aria-label="К началу страницы">
-        <span class="brand__mark" aria-hidden="true">S</span>
+        <img class="brand__logo" src="assets/logo-kurs-zala.png" alt="" />
         <span class="brand__label">СЕКТА · ОЗНАКОМИТЕЛЬНАЯ ВЕРСИЯ</span>
       </a>
       <nav class="primary-navigation" aria-label="Разделы страницы">
